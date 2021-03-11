@@ -234,6 +234,23 @@ dbus-uuidgen > /var/lib/dbus/machine-id
 	Option "Tapping" "on"
 EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 
+# Disable mouse accel
+[ ! -f /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf ] && printf 'Section "InputClass"
+        Identifier "My Mouse"
+	MatchIsPointer "yes"
+	Option "AccelerationProfile" "-1"
+	Option "AccelerationScheme" "none"
+	Option "AccelSpeed" "-1"
+EndSection' > /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf
+
+# Disable blanking
+[ ! -f /etc/X11/xorg.conf.d/51-blanking.conf ] && printf 'Section "ServerFlags"
+        Option "StandbyTime" "0"
+	Option "SuspendTime" "0"
+	Option "OffTime" "0"
+	Option "BlankTime" "0"
+EndSection' > /etc/X11/xorg.conf.d/51-blanking.conf
+
 # Fix fluidsynth/pulseaudio issue.
 grep -q "OTHER_OPTS='-a pulseaudio -m alsa_seq -r 48000'" /etc/conf.d/fluidsynth ||
 	echo "OTHER_OPTS='-a pulseaudio -m alsa_seq -r 48000'" >> /etc/conf.d/fluidsynth
