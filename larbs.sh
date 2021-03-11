@@ -236,7 +236,7 @@ EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 
 # Disable mouse accel
 [ ! -f /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf ] && printf 'Section "InputClass"
-        Identifier "My Mouse"
+	Identifier "My Mouse"
 	MatchIsPointer "yes"
 	Option "AccelerationProfile" "-1"
 	Option "AccelerationScheme" "none"
@@ -245,7 +245,7 @@ EndSection' > /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf
 
 # Disable blanking
 [ ! -f /etc/X11/xorg.conf.d/51-blanking.conf ] && printf 'Section "ServerFlags"
-        Option "StandbyTime" "0"
+	Option "StandbyTime" "0"
 	Option "SuspendTime" "0"
 	Option "OffTime" "0"
 	Option "BlankTime" "0"
