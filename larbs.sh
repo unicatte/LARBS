@@ -237,10 +237,10 @@ EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 # Disable mouse accel
 [ ! -f /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf ] && printf 'Section "InputClass"
 	Identifier "My Mouse"
+	Driver "libinput"
 	MatchIsPointer "yes"
-	Option "AccelerationProfile" "-1"
-	Option "AccelerationScheme" "none"
-	Option "AccelSpeed" "-1"
+	Option "AccelProfile" "flat"
+	Option "AccelSpeed" "0.4"
 EndSection' > /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf
 
 # Disable blanking
