@@ -235,13 +235,13 @@ dbus-uuidgen > /var/lib/dbus/machine-id
 EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 
 # Disable mouse accel
-[ ! -f /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf ] && printf 'Section "InputClass"
+[ ! -f /etc/X11/xorg.conf.d/50-mouse-accel-flat.conf ] && printf 'Section "InputClass"
 	Identifier "My Mouse"
 	Driver "libinput"
 	MatchIsPointer "yes"
 	Option "AccelProfile" "flat"
 	Option "AccelSpeed" "0.4"
-EndSection' > /etc/X11/xorg.conf.d/50-mouse-accel-disable.conf
+EndSection' > /etc/X11/xorg.conf.d/50-mouse-accel-flat.conf
 
 # Disable blanking
 [ ! -f /etc/X11/xorg.conf.d/51-blanking.conf ] && printf 'Section "ServerFlags"
