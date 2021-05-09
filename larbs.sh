@@ -75,13 +75,13 @@ newperms() { # Set special sudoers settings for install (or after).
 
 manualinstall() { # Installs $1 manually if not installed. Used only for AUR helper here.
 	[ -f "/usr/bin/$1" ] || (
-	dialog --infobox "Installing \"$1\", an AUR helper..." 4 50
+	echo -e "\033[0;32m[LARBS-uni]\033[0m: Installing \"$1\", an AUR helper..."
 	cd /tmp || exit 1
 	rm -rf /tmp/"$1"*
 	curl -sO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz &&
 	sudo -u "$name" tar -xvf "$1".tar.gz >/dev/null 2>&1 &&
 	cd "$1" &&
-	sudo -u "$name" makepkg --noconfirm -si >/dev/null 2>&1
+	sudo -u "$name" makepkg --noconfirm -si
 	cd /tmp || return 1) ;}
 
 maininstall() { # Installs all needed programs from main repo.
